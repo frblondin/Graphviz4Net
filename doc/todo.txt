@@ -1,0 +1,13 @@
+﻿
+- split the source code into the core module and WPF module
+- rename generic example to WPF example
+- ritcher WPF example: change color when hoover, dotted edges.
+- create implementation for Silverlight and example
+- create a NuGet package
+- documentation for core package: DOT parsing fot .NET
+- a little bit of documentation for core package: ILayoutBuilder implementation
+--> release version 1.0
+
+- create implementation for HTML5 with an ASP.NET control and example
+- create implementation for Windows.Forms and example
+
