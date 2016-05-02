@@ -1,0 +1,18 @@
+version: '2.0.{build}.0'
+
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
+before_build:
+  nuget restore src\Graphviz4Net.sln
+
+build:
+  parallel: true
+  project: 'src\Graphviz4Net.sln'
+
+artifacts:
+  path: NuGet

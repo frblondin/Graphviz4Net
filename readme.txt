@@ -1,4 +1,15 @@
-﻿This is the development distribution of Graphviz4Net it contains source codes, 
+﻿This is a fork of Graphviz4net.
+
+Following things are different from Codeplex:
+* Build with .Net 4.5
+* CI on appveyor (badge soon)
+* publish NuGet package (soon)
+* Silverlight build not working (not interested in that, but I accepts PR)
+
+Below, original readme
+-------------------------------------------
+
+This is the development distribution of Graphviz4Net it contains source codes, 
 documentation and tools needed to build Graphviz4Net from sources.
 
 -------------------------------------------
