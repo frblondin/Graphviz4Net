@@ -1,0 +1,5 @@
+/src/.vs/Graphviz4Net/v14/*.suo
+/src/UpgradeLog.htm
+obj/
+bin/
+/src/Graphviz4Net.Core/Dot/AntlrParser/Generated/*.tokens

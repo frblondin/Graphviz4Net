@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphviz4Net.Core", "Graphviz4Net.Core\Graphviz4Net.Core.csproj", "{903CE537-66BF-4867-BE5C-DB8958F5E1B3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graphviz4Net.WPF", "Graphviz4Net.WPF\Graphviz4Net.WPF.csproj", "{EE5D79D6-D196-4345-A271-DC2E79E26DDA}"
