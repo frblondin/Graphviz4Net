@@ -2,4 +2,5 @@
 /src/UpgradeLog.htm
 obj/
 bin/
-/src/Graphviz4Net.Core/Dot/AntlrParser/Generated/*.tokens
+*.tokens
+/src/packages/
