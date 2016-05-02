@@ -32,7 +32,7 @@
     <LinkedServerProject>
     </LinkedServerProject>
     <FileUpgradeFlags>40</FileUpgradeFlags>
-    <UpgradeBackupLocation>C:\dev\graphviz4net\src\Backup\Graphviz4Net.SL.Example\</UpgradeBackupLocation>
+    <UpgradeBackupLocation>C:\dev\graphviz4net\src\Backup1\</UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
   </PropertyGroup>
   <!-- This property group is only here to support building this project using the 
