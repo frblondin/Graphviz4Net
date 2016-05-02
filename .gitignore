@@ -4,3 +4,6 @@ obj/
 bin/
 *.tokens
 /src/packages/
+/src/Backup1
+/src/Backup
+/src/UpgradeLog2.htm
