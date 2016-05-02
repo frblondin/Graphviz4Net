@@ -13,6 +13,13 @@ before_build:
 build:
   parallel: true
   project: 'src\Graphviz4Net.sln'
+  publish_nuget: true
 
 artifacts:
   path: NuGet
+
+Deploy:
+  - provider: Nuget
+    api_key:
+      secure: srBMVDnPbP0bAvQALTu0Pi+wQWUWCSDExxmbN5HQ/kDXQvvzf/hPwdV5e4zBnhVG
+    artifact: Graphviz4Net.nupkg
