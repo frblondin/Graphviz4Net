@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+		<id>GraphViz4Net.WPF</id>
+		<version>2.0.0</version>
+		<authors>Thomas Piart, stevesindelar</authors>
+		<summary>Graphviz4Net provides .NET API for generating input and consuming the output of the Graphviz command line tool</summary>
+		<description>Graphviz4Net provides .NET API for generating input and consuming the output of the Graphviz command line tool.</description>
+		<language>en-US</language>
+		<licenseUrl>https://github.com/tomap/Graphviz4Net/license</licenseUrl>
+		<projectUrl>https://github.com/tomap/Graphviz4Net</projectUrl>
+		<tags>Graphviz graphviz4net</tags>
+		<dependencies>
+		  <dependency id="Antlr" version="3.5.0.2" />
+		</dependencies>
+	</metadata>
+	<files>
+		<file src="src\Graphviz4Net.WPF\bin\Release\Graphviz4Net.WPF.dll" target="lib\net45" />
+		<file src="src\Graphviz4Net.WPF\bin\Release\Graphviz4Net.WPF.pdb" target="lib\net45" />
+	</files>
+</package>
+

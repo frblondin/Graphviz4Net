@@ -12,6 +12,6 @@ namespace Graphviz4Net
         /// </summary>
         /// <param name="writeGraph">An action which writers the input form the DOT into the given stream.</param>
         /// <returns>A reader to read the output of the DOT.</returns>
-        TextReader RunDot(Action<TextWriter> writeGraph);
+        TextReader RunDot(Action<TextWriter> writeGraph, Graphs.LayoutEngine engine = Graphs.LayoutEngine.Dot);
     }
 }

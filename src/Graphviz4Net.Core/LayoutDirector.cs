@@ -128,6 +128,7 @@ namespace Graphviz4Net
         /// Runs the dot program and parses it's output.         
         /// An invocation of <see cref="StartBuilder"/> must precede by a call to this method.
         /// </summary>
+        /// <param name="engine">Layout engine to use.</param>
         /// <remarks>
         /// This method uses <see cref="IDotRunner"/> and <see cref="IDotParser{TVertexId}"/>, 
         /// it does not invoke any method on <see cref="ILayoutBuilder{TVertexId}"/>. 
@@ -135,7 +136,7 @@ namespace Graphviz4Net
         /// this method does not have to do so, unless the <see cref="IDotRunner"/> or 
         /// <see cref="IDotParser{TVertexId}"/> require it.
         /// </remarks>
-        public void RunDot()
+        public void RunDot(LayoutEngine engine = LayoutEngine.Dot)
         {
             if (this.originalGraph == null)
             {
@@ -149,7 +150,8 @@ namespace Graphviz4Net
                         this.converter.Convert(
                             writer, 
                             this.originalGraph, 
-                            new AttributesProvider(builder)));
+                            new AttributesProvider(builder)),
+                engine);
             this.dotGraph = this.parser.Parse(reader);
         }
 

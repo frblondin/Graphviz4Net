@@ -17,7 +17,7 @@ namespace Graphviz4Net
             this.filename = filename;
         }
 
-        public TextReader RunDot(Action<TextWriter> writeGraph)
+        public TextReader RunDot(Action<TextWriter> writeGraph, Graphs.LayoutEngine engine = Graphs.LayoutEngine.Dot)
         {
             using (var writer = new StringWriter()) 
             {
@@ -27,7 +27,7 @@ namespace Graphviz4Net
                 File.WriteAllText(graphFile, graph);
 
                 // now we read the file and write it to the real process input.
-                using (var reader = this.runner.RunDot(w => w.Write(graph)))
+                using (var reader = this.runner.RunDot(w => w.Write(graph), engine))
                 {
                     // we read all output, save it into another file, and return it as a memory stream
                     var text = reader.ReadToEnd();
