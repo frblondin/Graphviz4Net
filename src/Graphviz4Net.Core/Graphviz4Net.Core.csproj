@@ -89,6 +89,7 @@
     <Compile Include="Graphs\IGraph.cs" />
     <Compile Include="Graphs\ISubGraph.cs" />
     <Compile Include="Graphs\IVerticesCollection.cs" />
+    <Compile Include="Graphs\LayoutEngine.cs" />
     <Compile Include="Graphs\RankDirection.cs" />
     <Compile Include="Graphs\SubGraph.cs" />
     <Compile Include="Graphviz4NetException.cs" />

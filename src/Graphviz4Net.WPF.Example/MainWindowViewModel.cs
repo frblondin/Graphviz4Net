@@ -132,6 +132,17 @@ namespace Graphviz4Net.WPF.Example
 
         public Graph<Person> Graph { get; private set; }
 
+        private LayoutEngine _layoutEngine = LayoutEngine.Dot;
+        public LayoutEngine LayoutEngine
+        {
+            get { return _layoutEngine; }
+            set
+            {
+                _layoutEngine = value;
+                this.RaisePropertyChanged("LayoutEngine");
+            }
+        }
+
         public string NewPersonName { get; set; }
 
 		public string UpdatePersonName { get; set; }

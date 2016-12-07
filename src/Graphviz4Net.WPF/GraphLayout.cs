@@ -39,6 +39,13 @@ namespace Graphviz4Net.WPF
                 typeof(GraphLayout),
                 new PropertyMetadata(false));
 
+        public static readonly DependencyProperty EngineProperty =
+            DependencyProperty.Register(
+                "Engine",
+                typeof(LayoutEngine),
+                typeof(GraphLayout),
+                new PropertyMetadata(OnPropertyGraphChanged));
+
         public static readonly DependencyProperty DotExecutablePathProperty =
             DependencyProperty.Register(
                 "DotExecutablePath",
@@ -106,6 +113,12 @@ namespace Graphviz4Net.WPF
         {
             get { return (bool)this.GetValue(LogGraphvizOutputProperty); }
             set { this.SetValue(LogGraphvizOutputProperty, value); }
+        }
+
+        public LayoutEngine Engine
+        {
+            get { return (LayoutEngine)this.GetValue(EngineProperty); }
+            set { this.SetValue(EngineProperty, value); }
         }
 
         public event EventHandler<EventArgs> OnLayoutUpdated;
@@ -267,9 +280,12 @@ namespace Graphviz4Net.WPF
 
             public void Run()
             {
+                var engine = default(LayoutEngine);
+                this.parent.Dispatcher.Invoke(new VoidDelegate(() => engine = this.parent.Engine));
+
                 try
                 {
-                    this.director.RunDot();
+                    this.director.RunDot(engine);
                 }
                 catch (Exception ex)
                 {

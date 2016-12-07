@@ -23,7 +23,7 @@ namespace Graphviz4Net
         /// </summary>
         public string DotExecutable { get; set; }
 
-        public TextReader RunDot(Action<TextWriter> writeGraph)
+        public TextReader RunDot(Action<TextWriter> writeGraph, Graphs.LayoutEngine engine = Graphs.LayoutEngine.Dot)
         {
             var process = new Process();
             try
@@ -32,7 +32,7 @@ namespace Graphviz4Net
                                         {
                                             CreateNoWindow = true,
                                             UseShellExecute = false,
-                                            Arguments = "-Tdot",
+                                            Arguments = $"-Tdot -K{engine.ToString().ToLowerInvariant()}",
                                             FileName = Path.Combine(this.DotExecutablePath, this.DotExecutable),
                                             RedirectStandardOutput = true,
                                             RedirectStandardInput = true
