@@ -19,6 +19,7 @@ build:
 
 after_build:
   - cmd: nuget pack Graphviz4Net.nuspec -version "%APPVEYOR_BUILD_VERSION%"
+  - cmd: nuget pack Graphviz4Net.wpf.nuspec -version "%APPVEYOR_BUILD_VERSION%"
 
 artifacts:
   path: 'Graphviz4Net*.nupkg'
