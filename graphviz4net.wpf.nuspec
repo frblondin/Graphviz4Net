@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
-		<id>GraphViz4Net.WPF</id>
+		<id>GraphViz4Net.WPF2</id>
 		<version>2.0.0</version>
 		<authors>Thomas Piart, stevesindelar</authors>
 		<summary>Graphviz4Net provides .NET API for generating input and consuming the output of the Graphviz command line tool</summary>
