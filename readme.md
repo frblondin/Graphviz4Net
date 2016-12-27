@@ -3,7 +3,9 @@
 Following things are different from Codeplex:
 * Build with .Net 4.5
 * CI on appveyor [![Build status](https://ci.appveyor.com/api/projects/status/5enovot8rf7v8y7i?svg=true)](https://ci.appveyor.com/project/tomap/graphviz4net)
-* publish NuGet package (soon)
+* Published NuGet package:
+  * https://www.nuget.org/packages/GraphViz4Net/
+  * https://www.nuget.org/packages/GraphViz4Net.WPF2/
 * Silverlight build not working (not interested in that, but I accepts PR)
 
 Below, original readme
