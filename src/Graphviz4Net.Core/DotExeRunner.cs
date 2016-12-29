@@ -25,18 +25,23 @@ namespace Graphviz4Net
 
         public TextReader RunDot(Action<TextWriter> writeGraph, Graphs.LayoutEngine engine = Graphs.LayoutEngine.Dot)
         {
+            return Run(writeGraph, "dot", engine);
+        }
+
+        public TextReader Run(Action<TextWriter> writeGraph, string format, Graphs.LayoutEngine engine = Graphs.LayoutEngine.Dot)
+        {
             var process = new Process();
             try
             {
                 process.StartInfo = new ProcessStartInfo
-                                        {
-                                            CreateNoWindow = true,
-                                            UseShellExecute = false,
-                                            Arguments = $"-Tdot -K{engine.ToString().ToLowerInvariant()}",
-                                            FileName = Path.Combine(this.DotExecutablePath, this.DotExecutable),
-                                            RedirectStandardOutput = true,
-                                            RedirectStandardInput = true
-                                        };
+                {
+                    CreateNoWindow = true,
+                    UseShellExecute = false,
+                    Arguments = $"-T{format} -K{engine.ToString().ToLowerInvariant()}",
+                    FileName = Path.Combine(this.DotExecutablePath, this.DotExecutable),
+                    RedirectStandardOutput = true,
+                    RedirectStandardInput = true
+                };
                 process.Start();
                 process.StandardInput.AutoFlush = true;
                 writeGraph(process.StandardInput);
@@ -46,11 +51,11 @@ namespace Graphviz4Net
             catch (Exception ex)
             {
                 var msg = string.Format(
-                    "An exception occurred in DotExeRunner.RunDot(Action<StreamWriter>)." + 
-                    "Check if you have GrahpViz installed on your machine. " + 
-                    "Check that the folder where file 'dot.exe' is (part of GraphViz installation) is " + 
-                    "either in the system PATH variable or you must set it as value of the DotExecutablePath property." + 
-                    "Original exception type {0} and message: {1}", 
+                    "An exception occurred in DotExeRunner.RunDot(Action<StreamWriter>)." +
+                    "Check if you have GrahpViz installed on your machine. " +
+                    "Check that the folder where file 'dot.exe' is (part of GraphViz installation) is " +
+                    "either in the system PATH variable or you must set it as value of the DotExecutablePath property." +
+                    "Original exception type {0} and message: {1}",
                     ex.GetType().Name,
                     ex.Message);
                 throw new Exception(msg, ex);
