@@ -61,7 +61,7 @@ I would like to thank the authors of GraphViz for their effort in
 this project and for making it open-source.
 
 Web: http://graphviz4net.codeplex.com/
-Licence: GNU Library General Public License (LGPL) 
+Licence: New BSD
 Author: Steve Sindelar
 Contact: me@stevesindelar.cz
 
