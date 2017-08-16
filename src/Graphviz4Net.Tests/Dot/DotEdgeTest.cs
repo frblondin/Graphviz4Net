@@ -18,5 +18,15 @@ namespace Graphiz4Net.Tests.Dot
             Assert.AreEqual(new Point(9, 8.7), edge.Path[1]);
             Assert.AreEqual(new Point(2, 3), edge.DestinationArrowEnd);
         }
+
+        [Test]
+        public void TestPositionWithExponent()
+        {
+            var edge = new DotEdge<int>(new DotVertex<int>(0), new DotVertex<int>(1));
+            edge.Attributes.Add("pos", "e,2,3 2608.6,2.8422e-014");
+
+            Assert.AreEqual(new Point(2608.6, 2.8422e-014), edge.Path[0]);
+            Assert.AreEqual(new Point(2, 3), edge.DestinationArrowEnd);
+        }
     }
 }
