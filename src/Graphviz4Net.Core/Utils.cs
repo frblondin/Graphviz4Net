@@ -16,7 +16,7 @@ namespace Graphviz4Net
                 return false;
             }
 
-            return double.TryParse(str, NumberStyles.Number, CultureInfo.InvariantCulture, out number);
+            return double.TryParse(str, NumberStyles.Number | NumberStyles.AllowExponent, CultureInfo.InvariantCulture, out number);
         }
 
         public static double ParseInvariantDouble(string str)
