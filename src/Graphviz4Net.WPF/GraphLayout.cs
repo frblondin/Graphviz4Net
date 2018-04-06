@@ -9,6 +9,7 @@ namespace Graphviz4Net.WPF
     using Graphs;
 #if !SILVERLIGHT
     using System.Threading.Tasks;
+    using System.Windows.Data;
 #endif
 
     [TemplatePart(Name = "PART_Canvas", Type = typeof(Canvas))]
@@ -53,6 +54,13 @@ namespace Graphviz4Net.WPF
                 typeof(GraphLayout),
                 new PropertyMetadata(string.Empty));
 
+        public static readonly DependencyProperty ErrorTemplateProperty =
+           DependencyProperty.Register(
+               "ErrorTemplate",
+               typeof(DataTemplate),
+               typeof(GraphLayout),
+               new PropertyMetadata());
+
         private LayoutDirector director;
 
         private Exception backgroundException = null;
@@ -64,7 +72,7 @@ namespace Graphviz4Net.WPF
         {
             DefaultStyleKeyProperty.OverrideMetadata(
                             typeof(GraphLayout),
-                            new FrameworkPropertyMetadata(typeof(GraphLayout)));                      
+                            new FrameworkPropertyMetadata(typeof(GraphLayout)));
         }
 #endif
 
@@ -135,6 +143,12 @@ namespace Graphviz4Net.WPF
             set { this.SetValue(DotExecutablePathProperty, value); }
         }
 
+        public DataTemplate ErrorTemplate
+        {
+            get { return (DataTemplate)this.GetValue(ErrorTemplateProperty); }
+            set { this.SetValue(ErrorTemplateProperty, value); }
+        }
+
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -143,7 +157,7 @@ namespace Graphviz4Net.WPF
         }
 
         private static void OnUseContentPresenterForAllElementsChanged(
-            DependencyObject dependencyObject, 
+            DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs args)
         {
             var graphLayout = (GraphLayout)dependencyObject;
@@ -153,7 +167,7 @@ namespace Graphviz4Net.WPF
             }
             else
             {
-                graphLayout.elementsFactory = new DefaultLayoutElementsFactory();                
+                graphLayout.elementsFactory = new DefaultLayoutElementsFactory();
             }
         }
 
@@ -175,7 +189,7 @@ namespace Graphviz4Net.WPF
         private void UpdateVerticesLayout()
         {
             if (this.canvas == null ||
-				this.Graph == null ||
+                this.Graph == null ||
                 DesignerProperties.GetIsInDesignMode(this))
             {
                 return;
@@ -217,13 +231,7 @@ namespace Graphviz4Net.WPF
             }
             catch (Exception ex)
             {
-                var textBlock = new TextBlock { Width = 300, TextWrapping = TextWrapping.Wrap };
-                textBlock.Text =
-                    string.Format(
-                        "Graphviz4Net: an exception was thrown during layouting." +
-                        "Exception message: {0}.",
-                        ex.Message);
-                this.canvas.Children.Add(textBlock);
+                ShowError(ex);
             }
         }
 
@@ -255,14 +263,17 @@ namespace Graphviz4Net.WPF
 
         private void ShowError(Exception ex)
         {
-            var textBlock = new TextBlock { Width = 300, TextWrapping = TextWrapping.Wrap };
-            textBlock.Text =
-                string.Format(
+            var content = new ContentControl { ContentTemplate = ErrorTemplate, Width = 300 };
+            content.Content = new
+            {
+                ErrorMessage = string.Format(
                     "Graphviz4Net: an exception was thrown during layouting." +
                     "Exception message: {0}.",
-                    ex.Message);
+                    ex.Message),
+                Error = ex
+            };
             this.canvas.Children.Clear();
-            this.canvas.Children.Add(textBlock);
+            this.canvas.Children.Add(content);
         }
 
         private delegate void VoidDelegate();
