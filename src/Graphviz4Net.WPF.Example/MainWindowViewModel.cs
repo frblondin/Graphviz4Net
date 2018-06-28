@@ -148,6 +148,10 @@ namespace Graphviz4Net.WPF.Example
 		public string UpdatePersonName { get; set; }
 
 		public string UpdatePersonNewName { get; set; }
+        public string DotExecutablePath
+        {
+            get { return @"C:\Program Files (x86)\Graphviz2.38\bin"; }
+        }
 
         public IEnumerable<string> PersonNames
         {

@@ -11,3 +11,5 @@ src/Graphviz4Net.v12.suo
 .vs/slnx.sqlite
 src/.vs/Graphviz4Net/v15/.suo
 src/.vs/Graphviz4Net/v15/sqlite3/storage.ide
+.vs
+*.bak

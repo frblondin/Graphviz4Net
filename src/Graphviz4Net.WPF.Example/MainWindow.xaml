@@ -83,6 +83,13 @@
             <Path Data="{Binding Data}" Stroke="Black" StrokeThickness="1" ToolTip="{Binding Edge.Label}"/>
         </DataTemplate>
 
+        <DataTemplate x:Key="ErrorTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="pack://application:,,,/Graphviz4Net.WPF.Example;component/Assets/error.png"/>
+                <TextBlock Text="{Binding ErrorMessage}" TextWrapping="Wrap" Width="300"/>
+            </StackPanel>
+        </DataTemplate>
+
         <ObjectDataProvider x:Key="dataFromLayoutEngineEnum" MethodName="GetValues"
                             ObjectType="{x:Type System:Enum}">
             <ObjectDataProvider.MethodParameters>
@@ -144,6 +151,7 @@
             <WPF:GraphLayout 
                 UseContentPresenterForAllElements="True"
                 LogGraphvizOutput="True"
+                ErrorTemplate="{StaticResource ErrorTemplate}"
                 Graph="{Binding Graph}"
                 Engine="{Binding LayoutEngine}"
                 x:Name="GraphLayout">
