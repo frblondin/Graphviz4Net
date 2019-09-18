@@ -24,7 +24,6 @@ using System.Windows;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("7ceb699f-99e9-42dd-98a2-50c4f05e43fe")]
 
-#if !SILVERLIGHT
 [assembly: ThemeInfo(
     ResourceDictionaryLocation.None, //where theme specific resource dictionaries are located
     //(used if a resource is not found in the page,

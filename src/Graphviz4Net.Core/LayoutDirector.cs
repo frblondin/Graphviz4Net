@@ -75,11 +75,7 @@ namespace Graphviz4Net
                 converter = new GraphToDotConverter();
             if (dotRunner == null)
             {
-#if SILVERLIGHT
-                dotRunner = new DotAutomationFactoryRunner();
-#else
                 dotRunner = new DotExeRunner();
-#endif
             }
 
             return new LayoutDirector(builder, parser, converter, dotRunner);
