@@ -30,3 +30,5 @@ deploy:
     secure: srBMVDnPbP0bAvQALTu0Pi+wQWUWCSDExxmbN5HQ/kDXQvvzf/hPwdV5e4zBnhVG
   artifact: /GraphViz4Net.*\.nupkg/
   skip_symbols: false
+  on:
+    branch: master                 # release from master branch only
