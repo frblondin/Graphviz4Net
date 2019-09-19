@@ -64,9 +64,10 @@ namespace Graphviz4Net.WPF
             }
         }
 
-        public override Size GetSize(object vertex)
+        public override Primitives.Size GetSize(object vertex)
         {
-            return this.verticesSizes[vertex];
+            var size = this.verticesSizes[vertex];
+            return new Primitives.Size(size.Width, size.Height);
         }
 
         public override void Finish()
@@ -83,7 +84,7 @@ namespace Graphviz4Net.WPF
             this.canvas.Height = height;
         }
 
-        public override void BuildVertex(Point position, double width, double height, object originalVertex, DotVertex<int> dotVertex)
+        public override void BuildVertex(Primitives.Point position, double width, double height, object originalVertex, DotVertex<int> dotVertex)
         {
             var element = this.verticesElements[originalVertex];
             UpdatePosition(element, position.X, position.Y, width, height, canvas);
@@ -102,8 +103,8 @@ namespace Graphviz4Net.WPF
             canvas.Children.Add(element);
             element.Width = rightX - leftX;
             element.Height = upperY - lowerY;
-            Point orig = new Point(leftX, upperY);
-            Point p = TransformCoordinates(orig, canvas);
+            var orig = new Primitives.Point(leftX, upperY);
+            var p = TransformCoordinates(orig, canvas);
             Canvas.SetLeft(element, p.X);
             Canvas.SetTop(element, p.Y);
 
@@ -111,7 +112,7 @@ namespace Graphviz4Net.WPF
             this.verticesElements.Add(originalSubGraph, element);
         }
 
-        public override void BuildEdge(Point[] path, IEdge originalEdge, DotEdge<int> edge)
+        public override void BuildEdge(Primitives.Point[] path, IEdge originalEdge, DotEdge<int> edge)
         {            
             var data = Geometry.Parse(TransformCoordinates(path, this.canvas));
             var edgeElement = this.elementsFactory.CreateEdge(new EdgeViewModel(data, originalEdge));
@@ -158,7 +159,7 @@ namespace Graphviz4Net.WPF
             }
         }
 
-        private void CreateLabel(Point pos, FrameworkElement label)
+        private void CreateLabel(Primitives.Point pos, FrameworkElement label)
         {
             this.canvas.Children.Add(label);
             label.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
@@ -201,7 +202,7 @@ namespace Graphviz4Net.WPF
             Canvas.SetLeft(arrowControl, arrowStart.X - halfWidth);
         }
 
-        private static bool IsOnBoder(Point leftBottom, double width, double height, Point point)
+        private static bool IsOnBoder(Primitives.Point leftBottom, double width, double height, Point point)
         {
             return
                 (Utils.AreEqual(leftBottom.Y, point.Y) && leftBottom.X <= point.X && point.X <= leftBottom.X + width) ||
@@ -223,12 +224,12 @@ namespace Graphviz4Net.WPF
             Canvas.SetTop(element, canvas.Height - (y + heightInPoints / 2));
         }
 
-        private static Point TransformCoordinates(Point p, Canvas canvas)
+        private static Point TransformCoordinates(Primitives.Point p, Canvas canvas)
         {
             return new Point(p.X, canvas.Height - p.Y);
         }
 
-        private static string TransformCoordinates(Point[] data, Canvas canvas)
+        private static string TransformCoordinates(Primitives.Point[] data, Canvas canvas)
         {
             var transformed = data.Select(x => TransformCoordinates(x, canvas))
                 .Select(p => p.X.ToInvariantString() + "," + p.Y.ToInvariantString());

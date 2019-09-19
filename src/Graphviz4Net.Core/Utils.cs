@@ -1,6 +1,7 @@
 ﻿
 namespace Graphviz4Net
 {
+    using Graphviz4Net.Primitives;
     using System;
     using System.Collections.Generic;
     using System.Globalization;

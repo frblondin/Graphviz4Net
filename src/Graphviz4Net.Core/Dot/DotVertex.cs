@@ -1,9 +1,9 @@
 ﻿
 namespace Graphviz4Net.Dot
 {
-    using System.Windows;
     using System.Collections.Generic;
     using Graphs;
+    using Graphviz4Net.Primitives;
 
     /// <summary>
     /// Represents a vertex in a <see cref="DotGraph{TVertexId}"/> obtained from an output of the DOT program.

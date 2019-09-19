@@ -6,6 +6,7 @@ namespace Graphviz4Net
     using System.Windows;
     using Dot;
     using Graphs;
+    using Graphviz4Net.Primitives;
 
     /// <summary>
     /// Abstract class providers basic implementation of some of the <see cref="ILayoutBuilder{TVertexId}"/> 

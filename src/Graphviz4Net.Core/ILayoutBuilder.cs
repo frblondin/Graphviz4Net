@@ -7,6 +7,7 @@ namespace Graphviz4Net
     using System.Windows;
     using Dot;
     using Graphs;
+    using Graphviz4Net.Primitives;
 
     /// <summary>
     /// An interface for a class that builds the actual layout from information 
