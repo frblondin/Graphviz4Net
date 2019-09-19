@@ -1,11 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProductVersion>8.0.30703</ProductVersion>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <AssemblyTitle>Graphviz4Net.WPF</AssemblyTitle>
     <Product>Graphviz4Net.WPF</Product>
     <Description>Graphviz4Net implementation of WPF layout control.</Description>
     <Copyright>Copyright Steve Sindelar © 2011</Copyright>
+    <PackageLicense>https://github.com/tomap/Graphviz4Net/license</PackageLicense>
+    <PackageProjectUrl>https://github.com/tomap/Graphviz4Net</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -13,9 +15,6 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>Graphviz4Net.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.*" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />

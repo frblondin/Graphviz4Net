@@ -1,4 +1,4 @@
-version: '2.0.{build}.0'
+version: '3.0.{build}.0'
 
 configuration: Release
 
@@ -18,8 +18,8 @@ build:
   publish_nuget: true
 
 after_build:
-  - cmd: nuget pack Graphviz4Net.nuspec -version "%APPVEYOR_BUILD_VERSION%"
-  - cmd: nuget pack Graphviz4Net.wpf.nuspec -version "%APPVEYOR_BUILD_VERSION%"
+  - cmd: dotnet pack src\Graphviz4Net.Core  --no-build --include-symbols --include-source --configuration %BuildConfiguration% --output . -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
+  - cmd: dotnet pack src\Graphviz4Net.WPF  --no-build --include-symbols --include-source --configuration %BuildConfiguration% --output . -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
 
 artifacts:
   path: 'Graphviz4Net*.nupkg'
