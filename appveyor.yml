@@ -1,6 +1,10 @@
 version: '3.0.{build}.0'
-
+# Do not build on tags (GitHub and BitBucket)
+skip_tags: true
+image: Visual Studio 2019 Preview
 configuration: Release
+pull_requests:
+  do_not_increment_build_number: true
 
 assembly_info:
   patch: true
@@ -15,11 +19,11 @@ before_build:
 build:
   parallel: true
   project: 'src\Graphviz4Net.sln'
-  publish_nuget: true
+  publish_nuget: false
 
 after_build:
-  - cmd: dotnet pack src\Graphviz4Net.Core  --no-build --include-symbols --include-source --configuration %BuildConfiguration% --output . -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
-  - cmd: dotnet pack src\Graphviz4Net.WPF  --no-build --include-symbols --include-source --configuration %BuildConfiguration% --output . -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
+  - cmd: dotnet pack src\Graphviz4Net.Core  --no-build --include-symbols --include-source --configuration Release --output . -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
+  - cmd: dotnet pack src\Graphviz4Net.WPF  --no-build --include-symbols --include-source --configuration Release --output . -p:PackageVersion=%APPVEYOR_BUILD_VERSION%
 
 artifacts:
   path: 'Graphviz4Net*.nupkg'
