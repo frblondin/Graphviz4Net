@@ -16,11 +16,7 @@ namespace Graphviz4Net.Graphs
         event EventHandler<GraphChangedArgs> Changed;
     }
 
-#if SILVERLIGHT
-    public interface ISubGraph<TVertex> : ISubGraph
-#else
     public interface ISubGraph<out TVertex> : ISubGraph
-#endif
     {
         new IEnumerable<TVertex> Vertices { get; }
     }

@@ -7,9 +7,7 @@ namespace Graphviz4Net.WPF
     using System.Windows;
     using System.Windows.Controls;
     using Graphs;
-#if !SILVERLIGHT
     using System.Threading.Tasks;
-#endif
 
     [TemplatePart(Name = "PART_Canvas", Type = typeof(Canvas))]
     public class GraphLayout : Control
@@ -59,21 +57,15 @@ namespace Graphviz4Net.WPF
 
         private ProgressBar progress = null;
 
-#if !SILVERLIGHT
         static GraphLayout()
         {
             DefaultStyleKeyProperty.OverrideMetadata(
                             typeof(GraphLayout),
                             new FrameworkPropertyMetadata(typeof(GraphLayout)));                      
         }
-#endif
 
         public GraphLayout()
         {
-#if SILVERLIGHT
-            this.DefaultStyleKey = typeof(GraphLayout);
-#endif
-
             if (DesignerProperties.GetIsInDesignMode(this))
             {
                 var graph = new Graph<string, Edge<string>>();
@@ -183,9 +175,6 @@ namespace Graphviz4Net.WPF
 
             var builder = new WPFLayoutBuilder(this.canvas, this.elementsFactory);
             IDotRunner runner;
-#if SILVERLIGHT
-            runner = null;
-#else
             if (string.IsNullOrWhiteSpace(this.DotExecutablePath) == false)
             {
                 runner = new DotExeRunner { DotExecutablePath = this.DotExecutablePath };
@@ -194,7 +183,6 @@ namespace Graphviz4Net.WPF
             {
                 runner = new DotExeRunner();
             }
-#endif
 
             if (this.LogGraphvizOutput)
             {
@@ -209,11 +197,7 @@ namespace Graphviz4Net.WPF
             try
             {
                 director.StartBuilder(this.Graph);
-#if SILVERLIGHT
-                ThreadPool.QueueUserWorkItem(new LayoutAction(this, director).Run);
-#else
                 Task.Factory.StartNew(new LayoutAction(this, director).Run);
-#endif                    
             }
             catch (Exception ex)
             {

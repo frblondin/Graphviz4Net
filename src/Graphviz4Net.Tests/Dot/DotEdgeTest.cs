@@ -1,8 +1,8 @@
 ﻿
 namespace Graphiz4Net.Tests.Dot
 {
-    using System.Windows;
     using Graphviz4Net.Dot;
+    using Graphviz4Net.Primitives;
     using NUnit.Framework;
 
     [TestFixture]

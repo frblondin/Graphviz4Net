@@ -75,11 +75,7 @@ namespace Graphviz4Net
                 converter = new GraphToDotConverter();
             if (dotRunner == null)
             {
-#if SILVERLIGHT
-                dotRunner = new DotAutomationFactoryRunner();
-#else
                 dotRunner = new DotExeRunner();
-#endif
             }
 
             return new LayoutDirector(builder, parser, converter, dotRunner);
@@ -280,7 +276,7 @@ namespace Graphviz4Net
             public IDictionary<string, string> GetVertexAttributes(object vertex)
             {
                 var result = new Dictionary<string, string>();
-                Size size = this.builder.GetSize(vertex);
+                var size = this.builder.GetSize(vertex);
                 result.Add("width", size.Width.ToInvariantString());
                 result.Add("height", size.Height.ToInvariantString());
                 result.Add("shape", "rect");

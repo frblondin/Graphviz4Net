@@ -8,9 +8,7 @@ namespace Graphviz4Net.Dot
     using System.Collections.Generic;
     using System.Linq;
     using Graphs;
-#if !SILVERLIGHT
     using System.CodeDom.Compiler;
-#endif
 
     public class GraphToDotConverter : IGraphToDotConverter
     {
@@ -152,29 +150,5 @@ namespace Graphviz4Net.Dot
 
             return attributes.GetAttributes();
         }
-
-#if SILVERLIGHT
-        public class IndentedTextWriter : TextWriter
-        {
-            private readonly TextWriter writer;
-
-            public IndentedTextWriter(TextWriter writer)
-            {
-                this.writer = writer;
-            }
-
-            public int Indent { get; set; }
-
-            public override void Write(char value)
-            {
-                this.writer.Write(value);
-            }
-
-            public override Encoding Encoding
-            {
-                get { return this.writer.Encoding; }
-            }
-        }
-#endif
     }
 }
