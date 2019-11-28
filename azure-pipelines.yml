@@ -90,7 +90,7 @@ stages:
         inputs:
           gitHubConnection: frblondin-github
           repositoryName: '$(Build.Repository.Name)'
-          isPreRelease: true
+          isPreRelease: false
           tagSource: manual
           tag: $(Build.BuildNumber)
           assets: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
