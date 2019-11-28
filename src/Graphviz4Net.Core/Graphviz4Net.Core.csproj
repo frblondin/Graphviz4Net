@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ProductVersion>8.0.30703</ProductVersion>
     <RootNamespace>Graphviz4Net</RootNamespace>
     <AssemblyName>Graphviz4Net</AssemblyName>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -9,17 +8,15 @@
     <Product>Graphviz4Net.Core</Product>
     <Description>Graphviz4Net Core Library</Description>
     <Copyright>Copyright Steve Sindelar © 2011</Copyright>
-    <PackageLicenseUrl>https://github.com/tomap/Graphviz4Net/license</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/tomap/Graphviz4Net</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/frblondin/Graphviz4Net/license</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/frblondin/Graphviz4Net</PackageProjectUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>Graphviz4Net.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\Graphviz4Net.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <Target Name="BeforeBuildMigrated" BeforeTargets="PreBuildEvent">
     <Exec Command="..\..\tools\antlr-dotnet-csharp3\Antlr3.exe -o ./Dot/AntlrParser/Generated -message-format vs2005 ./Dot/AntlrParser/DotGrammar.g" />
@@ -41,9 +38,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphviz4Net.snk" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="DotAutomationFactoryRunner.cs" />
     <Compile Remove="Dot\AntlrParser\output\DotGrammarLexer.cs" />
     <Compile Remove="Dot\AntlrParser\output\DotGrammarParser.cs" />
@@ -54,5 +48,9 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Antlr3.Runtime" Version="3.5.1" />
+    <PackageReference Include="Nerdbank.GitVersioning" Version="3.0.28">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
