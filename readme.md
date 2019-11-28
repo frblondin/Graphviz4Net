@@ -1,11 +1,9 @@
 [![NuGet Badge](https://buildstats.info/nuget/GraphViz4Net)](https://www.nuget.org/packages/GraphViz4Net/)
 [![NuGet Badge](https://buildstats.info/nuget/GraphViz4Net.WPF2)](https://www.nuget.org/packages/GraphViz4Net.WPF2/)
-[![Build Status](https://dev.azure.com/thomas0449/GitHub/_apis/build/status/frblondin.GraphViz4Net?branchName=master)](https://dev.azure.com/thomas0449/GitHub/_build/latest?definitionId=1&branchName=master)
+[![Build Status](https://dev.azure.com/thomas0449/GitHub/_apis/build/status/frblondin.Graphviz4Net?branchName=master)](https://dev.azure.com/thomas0449/GitHub/_build/latest?definitionId=2&branchName=master)
 
-This is a fork of Graphviz4net.
-
-Following things are different from Codeplex:
-* Build with .Net 4.5 & Standard
+This is a fork of Graphviz4net from Codeplex with the following differences:
+* Build with .Net 4.6.1 & Standard
 * Published NuGet package:
   * https://www.nuget.org/packages/GraphViz4Net/
   * https://www.nuget.org/packages/GraphViz4Net.WPF2/
