@@ -5,6 +5,7 @@
     <Product>Graphviz4Net.WPF</Product>
     <Description>Graphviz4Net implementation of WPF layout control.</Description>
     <Copyright>Copyright Steve Sindelar © 2011</Copyright>
+	<PackageId>GraphViz4Net.WPF2</PackageId>
     <PackageLicense>https://github.com/frblondin/Graphviz4Net/license</PackageLicense>
     <PackageProjectUrl>https://github.com/frblondin/Graphviz4Net</PackageProjectUrl>
   </PropertyGroup>
