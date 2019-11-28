@@ -3,13 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.Core", "Graphviz4Net.Core\Graphviz4Net.Core.csproj", "{903CE537-66BF-4867-BE5C-DB8958F5E1B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.Core", "src\Graphviz4Net.Core\Graphviz4Net.Core.csproj", "{903CE537-66BF-4867-BE5C-DB8958F5E1B3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.WPF", "Graphviz4Net.WPF\Graphviz4Net.WPF.csproj", "{EE5D79D6-D196-4345-A271-DC2E79E26DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.WPF", "src\Graphviz4Net.WPF\Graphviz4Net.WPF.csproj", "{EE5D79D6-D196-4345-A271-DC2E79E26DDA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.WPF.Example", "Graphviz4Net.WPF.Example\Graphviz4Net.WPF.Example.csproj", "{F820EB5A-BBFD-46AD-9EEB-3DFE8D1D7BE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.WPF.Example", "src\Graphviz4Net.WPF.Example\Graphviz4Net.WPF.Example.csproj", "{F820EB5A-BBFD-46AD-9EEB-3DFE8D1D7BE7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.Tests", "Graphviz4Net.Tests\Graphviz4Net.Tests.csproj", "{B0B7E2D8-DB84-483D-ADED-1997D59A1B84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graphviz4Net.Tests", "tests\Graphviz4Net.Tests\Graphviz4Net.Tests.csproj", "{B0B7E2D8-DB84-483D-ADED-1997D59A1B84}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{BE2FBC24-2ADF-4F79-A5E0-43F602829963}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{50A88F3A-7324-4A11-A35D-68A8C59EFA4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5791597A-B748-43D6-A25C-8CDA7974F15A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		azure-pipelines.yml = azure-pipelines.yml
+		license = license
+		readme.md = readme.md
+		version.json = version.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,6 +81,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{903CE537-66BF-4867-BE5C-DB8958F5E1B3} = {BE2FBC24-2ADF-4F79-A5E0-43F602829963}
+		{EE5D79D6-D196-4345-A271-DC2E79E26DDA} = {BE2FBC24-2ADF-4F79-A5E0-43F602829963}
+		{F820EB5A-BBFD-46AD-9EEB-3DFE8D1D7BE7} = {BE2FBC24-2ADF-4F79-A5E0-43F602829963}
+		{B0B7E2D8-DB84-483D-ADED-1997D59A1B84} = {50A88F3A-7324-4A11-A35D-68A8C59EFA4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {51489899-7F51-4CF7-908F-5F40E92AA1A9}

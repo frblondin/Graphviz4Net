@@ -1,0 +1,96 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+- master
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+stages:
+  - stage: Master
+    jobs:
+    - job: Build1
+      displayName: 'Build & Test'
+      pool:
+        vmImage: 'windows-latest'
+      steps:
+      - task: NuGetToolInstaller@1
+        displayName: 'Install NuGet'
+
+      - task: NuGetCommand@2
+        displayName: Restore NuGet Packages
+        inputs:
+          restoreSolution: '$(solution)'
+
+      - task: MSBuild@1
+        displayName: Build Solution
+        inputs:
+          solution: '$(solution)'
+          restoreNugetPackages: false
+          configuration: $(buildConfiguration)
+
+      - task: DotNetCoreCLI@2
+        displayName: Run Unit Tests
+        inputs:
+          command: test
+          arguments: '--no-build --configuration $(BuildConfiguration) --logger:trx /p:CollectCoverage=true /p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+          projects: 'tests/**/*.csproj'
+
+      - task: PublishTestResults@2
+        displayName: Publish Test Results
+        inputs:
+          testRunner: VSTest
+          testResultsFiles: '**/*.trx'
+
+      - task: PublishCodeCoverageResults@1
+        displayName: 'Publish Code Coverage'
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: '$(Build.SourcesDirectory)/CodeCoverage/Cobertura.xml'
+          reportDirectory: '$(Build.SourcesDirectory)/CodeCoverage'
+
+      - script: |
+          dotnet pack src\Graphviz4Net.Core --no-build --include-symbols --include-source --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)
+          dotnet pack src\Graphviz4Net.WPF --no-build --include-symbols --include-source --configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)
+        displayName: Generate NuGet Packages
+
+      - task: PublishBuildArtifacts@1
+        displayName: Publish build Artifacts
+        inputs:
+          artifactName: nuget
+
+  - stage: NuGet
+    displayName: Upload to NuGet.org
+    dependsOn: Master
+    condition: and(succeeded('Master'), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    jobs:
+    - job: NuGet1
+      displayName: Upload
+      steps:
+      - task: DownloadBuildArtifacts@0
+        inputs:
+          buildType: current
+          downloadPath: '$(Build.ArtifactStagingDirectory)'
+          artifactName: nuget
+
+      - task: NuGetCommand@2
+        inputs:
+          command: push
+          packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+          nuGetFeedType: external
+          publishFeedCredentials: 'NuGet thomas@caudal.fr'
+
+      - task: GitHubRelease@0
+        displayName: Create GitHub Release
+        inputs:
+          gitHubConnection: frblondin-github
+          repositoryName: '$(Build.Repository.Name)'
+          isPreRelease: true
+          tagSource: manual
+          tag: $(Build.BuildNumber)
+          assets: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'

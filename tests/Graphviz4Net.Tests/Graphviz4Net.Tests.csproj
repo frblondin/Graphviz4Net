@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ProductVersion>8.0.30703</ProductVersion>
     <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
     <AssemblyTitle>Graphviz4Net.Tests</AssemblyTitle>
     <Product>Graphviz4Net.Tests</Product>
@@ -15,8 +14,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Graphviz4Net.Core\Graphviz4Net.Core.csproj" />
-    <ProjectReference Include="..\Graphviz4Net.WPF\Graphviz4Net.WPF.csproj" />
+    <ProjectReference Include="..\..\src\Graphviz4Net.Core\Graphviz4Net.Core.csproj" />
+    <ProjectReference Include="..\..\src\Graphviz4Net.WPF\Graphviz4Net.WPF.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
